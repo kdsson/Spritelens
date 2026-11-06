@@ -1,75 +1,60 @@
 <!doctype html>
-<html lang="en" w-tid="1">
-<head w-tid="3">
-  
-
-<link rel="stylesheet" href="https://api.websim.com/fonts.css?v=5f835caf4ad1458b62b11e4ec9b7c1ac76e92df2">
-<style class="websim-injected websim-ios-mobile-fix">
-/* iOS zoom prevention and overscroll behavior - injected by WebSim */
-html, body {
-  touch-action: pan-x pan-y;
-  -webkit-text-size-adjust: 100%;
-  overscroll-behavior: none;
-  overscroll-behavior-y: none;
-}
-input, textarea, select {
-  font-size: max(1rem, 16px) !important;
-}
-</style>
-<script class="websim-injected">__WEBSIM_DATA__={"home":false,"hostOrigin":"https://websim.com","apiOrigin":"https://api.websim.com","isTopLevelFrame":false,"project_id":"ku31g7k06d4l30ycjjsa","preview":true,"activityCaptureMode":"on","route":{"type":"project","id":"ku31g7k06d4l30ycjjsa"},"baseUrl":"https://websim.com/p/ku31g7k06d4l30ycjjsa"}</script>
-<script class="websim-injected" src="https://api.websim.com/dist/index.js?v=5f835caf4ad1458b62b11e4ec9b7c1ac76e92df2"></script>
-<meta charset="utf-8" w-tid="5"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1" w-tid="7"/>
-  <meta name="theme-color" content="#101114" w-tid="9"/>
-  <title w-tid="11">Sprite Lens</title>
-  <link rel="stylesheet" href="style.css" w-tid="13"/>
-  <script src="https://cdn.jsdelivr.net/npm/jszip@3.10.1/dist/jszip.min.js" crossOrigin="anonymous" w-tid="15"></script>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#101114">
+  <title>Sprite Lens</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/jszip@3.10.1/dist/jszip.min.js"></script>
 </head>
-<body w-tid="17">
-  <main class="app-shell" w-tid="19">
-    <header class="topbar" w-tid="21">
-      <a class="brand" href="./" aria-label="Sprite Lens home" w-tid="23"><span class="brand-mark" w-tid="25">S</span><span w-tid="27">sprite<span class="brand-light" w-tid="29">lens</span></span></a>
-      <div class="top-actions" w-tid="31"><span class="local-note" w-tid="33"><i w-tid="35"></i> Files stay on your device</span><button class="button button-quiet" id="fullscreen-toggle" type="button" aria-label="Enter fullscreen" title="Enter fullscreen" w-tid="37"><span aria-hidden="true" w-tid="39">⛶</span> <span id="fullscreen-label" w-tid="41">Fullscreen</span></button><button class="button button-quiet" id="open-file" w-tid="43">Open file <span class="shortcut" w-tid="45">↗</span></button></div>
+<body>
+  <main class="app-shell">
+    <header class="topbar">
+      <a class="brand" href="./" aria-label="Sprite Lens home"><span class="brand-mark">S</span><span>sprite<span class="brand-light">lens</span></span></a>
+      <div class="top-actions"><span class="local-note"><i></i> Files stay on your device</span><button class="button button-quiet" id="fullscreen-toggle" type="button" aria-label="Enter fullscreen" title="Enter fullscreen"><span aria-hidden="true">⛶</span> <span id="fullscreen-label">Fullscreen</span></button><button class="button button-quiet" id="open-file">Open file <span class="shortcut">↗</span></button></div>
     </header>
 
-    <section id="welcome" class="welcome" w-tid="47">
-      <div class="welcome-copy" w-tid="49">
-        <div class="eyebrow" w-tid="51"><span class="eyebrow-dot" w-tid="53"></span> SCRATCH SPRITE INSPECTOR</div>
-        <h1 w-tid="55">Everything inside<br w-tid="57"/>your <em w-tid="59">sprite.</em></h1>
-        <p w-tid="61">Inspect a <code w-tid="63">.sb3</code> project or <code w-tid="65">.sprite3</code> sprite, or turn a <code w-tid="67">.ttf</code> font into a Scratch sprite.</p>
+    <section id="welcome" class="welcome">
+      <div class="welcome-copy">
+        <div class="eyebrow"><span class="eyebrow-dot"></span> SCRATCH SPRITE INSPECTOR</div>
+        <h1>Everything inside<br>your <em>sprite.</em></h1>
+        <p>Inspect a <code>.sb3</code> project or <code>.sprite3</code> sprite, or turn a <code>.ttf</code> or <code>.otf</code> font into a Scratch sprite.</p>
       </div>
-      <div class="dropzone" id="dropzone" role="button" tabindex="0" aria-label="Choose or drop an sb3, sprite3, or TTF file" w-tid="69">
-        <div class="upload-icon" w-tid="71"><svg viewbox="0 0 24 24" aria-hidden="true" w-tid="73"><path d="M12 16V4m0 0L7 9m5-5 5 5M5 15v4a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-4" w-tid="75"/></svg></div>
-        <strong w-tid="77">Drop a sprite file here</strong>
-        <span w-tid="79">or <button class="text-button" id="browse" w-tid="81">browse files</button></span>
-        <small w-tid="83">Scratch project · .sb3 &nbsp; / &nbsp; Sprite · .sprite3 &nbsp; / &nbsp; Font · .ttf</small>
+      <div class="dropzone" id="dropzone" role="button" tabindex="0" aria-label="Choose or drop an sb3, pmp, sprite3, TTF, or OTF file">
+        <div class="upload-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 16V4m0 0L7 9m5-5 5 5M5 15v4a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-4"/></svg></div>
+        <strong>Drop a sprite file here</strong>
+        <span>or <button class="text-button" id="browse">browse files</button></span>
+        <small>Projects · .sb3 / .pmp &nbsp; / &nbsp; Sprite · .sprite3 &nbsp; / &nbsp; Font · .ttf / .otf</small>
       </div>
-      <div class="example-row" w-tid="85"><span w-tid="87">Want to take a look?</span><button class="example-link" id="example" w-tid="89">Open the Font example <span w-tid="91">↗</span></button></div>
+      <div class="converter-row"><button class="converter-link" id="convert-pmp" type="button">Convert a .pmp project to .sb3 <span aria-hidden="true">↓</span></button><input id="pmp-input" type="file" accept=".pmp,application/zip" hidden></div>
+      <p class="original-credit">originally hosted on <a href="https://websim.com/@giantstatue004167/sprite-inspector" target="_blank" rel="noopener noreferrer">https://websim.com/@giantstatue004167/sprite-inspector</a></p>
+      <div class="example-row"><span>Want to take a look?</span><button class="example-link" id="example">Open the Font example <span>↗</span></button></div>
     </section>
 
-    <section id="workspace" class="workspace hidden" w-tid="93">
-      <div class="filebar" w-tid="95">
-        <div class="file-identity" w-tid="97"><div class="file-glyph" w-tid="99">S</div><div w-tid="101"><div class="file-title" id="sprite-name" w-tid="103">Sprite</div><div class="file-subtitle" id="file-info" w-tid="105">.sprite3</div></div></div>
-        <div class="file-actions" w-tid="107"><button id="download-sprite" class="button button-download hidden" w-tid="109">Download .sprite3 ↓</button><button id="change-file" class="button button-quiet" w-tid="111">Open another</button></div>
+    <section id="workspace" class="workspace hidden">
+      <div class="filebar">
+        <div class="file-identity"><div class="file-glyph">S</div><div><div class="file-title" id="sprite-name">Sprite</div><div class="file-subtitle" id="file-info">.sprite3</div></div></div>
+        <div class="file-actions"><button id="download-sprite" class="button button-download hidden">Download .sprite3 ↓</button><button id="change-file" class="button button-quiet">Open another</button></div>
       </div>
-      <nav id="sprite-list" class="sprite-list hidden" aria-label="Sprites in project" w-tid="113"></nav>
-      <div class="tabs" role="tablist" aria-label="Sprite contents" w-tid="115">
-        <button class="tab active" data-tab="looks" role="tab" aria-selected="true" w-tid="117">Costumes <span class="tab-count" id="costume-count" w-tid="119">0</span></button>
-        <button class="tab" data-tab="sounds" role="tab" aria-selected="false" w-tid="121">Sounds <span class="tab-count" id="sound-count" w-tid="123">0</span></button>
-        <button class="tab" data-tab="code" role="tab" aria-selected="false" w-tid="125">Code <span class="tab-count" id="code-count" w-tid="127">0</span></button>
+      <nav id="sprite-list" class="sprite-list hidden" aria-label="Sprites in project"></nav>
+      <div class="tabs" role="tablist" aria-label="Sprite contents">
+        <button class="tab active" data-tab="looks" role="tab" aria-selected="true">Costumes <span class="tab-count" id="costume-count">0</span></button>
+        <button class="tab" data-tab="sounds" role="tab" aria-selected="false">Sounds <span class="tab-count" id="sound-count">0</span></button>
+        <button class="tab" data-tab="code" role="tab" aria-selected="false">Code <span class="tab-count" id="code-count">0</span></button>
       </div>
-      <section class="tab-panel" id="looks-panel" role="tabpanel" w-tid="129">
-        <div class="looks-layout" w-tid="131">
-          <div class="preview-column" w-tid="133"><div class="preview-stage" id="preview-stage" w-tid="135"><div class="stage-grid" w-tid="137"></div><img id="large-costume" alt="Selected costume" w-tid="139"/><div class="preview-empty hidden" id="preview-empty" w-tid="141">No costume preview</div></div><div class="preview-caption" w-tid="143"><span id="selected-name" w-tid="145">Choose a costume</span><span id="selected-index" w-tid="147"></span></div></div>
-          <div class="costume-column" w-tid="149"><div class="section-heading" w-tid="151"><div w-tid="153"><h2 w-tid="155">Costumes</h2><p w-tid="157">The artwork bundled with this sprite</p></div></div><div id="costume-grid" class="costume-grid" w-tid="159"></div></div>
+      <section class="tab-panel" id="looks-panel" role="tabpanel">
+        <div class="looks-layout">
+          <div class="preview-column"><div class="preview-stage" id="preview-stage"><div class="stage-grid"></div><img id="large-costume" alt="Selected costume"><div class="preview-empty hidden" id="preview-empty">No costume preview</div></div><div class="preview-caption"><span id="selected-name">Choose a costume</span><span id="selected-index"></span></div></div>
+          <div class="costume-column"><div class="section-heading"><div><h2>Costumes</h2><p>The artwork bundled with this sprite</p></div></div><div id="costume-grid" class="costume-grid"></div></div>
         </div>
       </section>
-      <section class="tab-panel hidden" id="sounds-panel" role="tabpanel" w-tid="161"><div class="code-heading" w-tid="163"><div w-tid="165"><h2 w-tid="167">Sounds</h2><p w-tid="169">Audio stored in this sprite</p></div></div><div id="sound-list" class="sound-list" w-tid="171"></div></section>
-      <section class="tab-panel hidden" id="code-panel" role="tabpanel" w-tid="173"><div class="code-heading" w-tid="175"><div w-tid="177"><h2 w-tid="179">Scratch code</h2><p w-tid="181">Scripts and custom blocks stored in this sprite</p></div><span class="code-source" w-tid="183">sprite.json</span></div><div id="scripts" class="scripts" w-tid="185"></div></section>
+      <section class="tab-panel hidden" id="sounds-panel" role="tabpanel"><div class="code-heading"><div><h2>Sounds</h2><p>Audio stored in this sprite</p></div></div><div id="sound-list" class="sound-list"></div></section>
+      <section class="tab-panel hidden" id="code-panel" role="tabpanel"><div class="code-heading"><div><h2>Scratch code</h2><p>Scripts and custom blocks stored in this sprite</p></div><span class="code-source">sprite.json</span></div><div id="scripts" class="scripts"></div></section>
     </section>
-    <div class="toast hidden" id="toast" role="status" w-tid="187"></div>
-    <input id="file-input" type="file" accept=".sprite3,.sb3,.ttf,application/zip,font/ttf" hidden w-tid="189"/>
+    <div class="toast hidden" id="toast" role="status"></div>
+    <input id="file-input" type="file" accept=".sprite3,.sb3,.pmp,.ttf,.otf,application/zip,font/ttf,font/otf,application/vnd.ms-opentype" hidden>
   </main>
-  <script type="module" src="app.js" w-tid="191"></script>
+  <script type="module" src="app.js"></script>
 </body>
-</html>
+  </html>
